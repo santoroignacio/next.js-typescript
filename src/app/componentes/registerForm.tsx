@@ -3,6 +3,7 @@
 //import { z } from "zod";
 //import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { POST } from "../api/users/route";
 //import { Button } from "@/components/ui/button";
 //import { Form, } from "@/components/ui/form";
 //import { IUser, zodUserSchema } from "@/models/users";
@@ -42,10 +43,9 @@ const RegisterFrom = () => {
       <div className='w-full max-w-3xl rounded-lg p-6 shadow-lg bg-white'>
         <div className='space-y-4'>
           <h2 className='text-2xl font-bold text-center'>Registro</h2>
-          <form >
             <form /* onSubmit={} */ className="flex flex-col items-stretch" >
               <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-10">
-                <label>Usuario</label>
+                <label>Nombre Usuario</label>
                 <input
                   //control={control}
                   name='username'
@@ -59,33 +59,27 @@ const RegisterFrom = () => {
                   placeholder='juan.doe@gmail.com'
                   type="email"
                 />
-                <label>Compañia</label>
-                <input
-                  //control={control}
-                  name='company'
-                  placeholder='Laboratorio'
-                  type="text"
-                />
-                <label>Contraseña</label>
+                <label>Password</label>
                 <input
                   //control={control}
                   name='password'
-                  type="password"
                   placeholder='***'
+                  type="password"
+                  
                 />
-                <label>Confirmar contraseña</label>
+                <label>Ciudad</label>
                 <input
-                 // control={control}
-                  name='confirmPassword'
-                  type="password"
-                  placeholder='***'
+                  //control={control}
+                  name='ciudad'
+                  type="text"
+                  
                 />
+                
               </div>
               <button className="self-center w-6/12" type='submit'>
                 Crear
               </button>
             </form>
-          </form>
         </div>
       </div>
     </div>
