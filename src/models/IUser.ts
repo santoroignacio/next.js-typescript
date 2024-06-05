@@ -1,6 +1,6 @@
 export type IUser = {
-    nombreUsuario: String,
-    emailUsuario: String,
-    passwordUsuario: String,
-    ciudadUsuario: String
+    nombreUsuario: string,
+    emailUsuario: string,
+    passwordUsuario: string,
+    ciudadUsuario: string
 }

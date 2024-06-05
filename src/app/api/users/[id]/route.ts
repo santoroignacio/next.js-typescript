@@ -1,6 +1,6 @@
 import { dbConnect } from '@/lib/dbConnect';
 import { NextResponse, NextRequest } from 'next/server';
-import { UserModel } from "@/models/User"
+import { UserModel } from "@/validations/userShemaZod"
 
 //   url: /api/users/id  --busca un usuario
 export const GET = async (req: NextRequest, { params }: { params: { id: string } }) => {
