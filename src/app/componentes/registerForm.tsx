@@ -1,10 +1,9 @@
 "use client";
 
 import { IUser } from "@/models/IUser";
-import { useState } from 'react';
 import { zodUserSchema } from "@/validations/userShemaZod";
 import handleZodError from "@/validations/handleZodError";
-import { Form, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -16,8 +15,11 @@ const RegisterFrom = () => {
     resolver: zodResolver(zodUserSchema),
   });
 
+
+
   async function onSubmit(values: z.infer<typeof zodUserSchema>) {
 
+    //registro el usuario
     try {
       const response = await fetch('/api/users', {
         method: 'POST',
