@@ -41,3 +41,4 @@ export const GET = async (req: Request, res: Response) => {
         return NextResponse.json({ data: null }, { status: 500 })
     }
 }
+

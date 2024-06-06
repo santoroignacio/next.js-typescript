@@ -1,20 +1,32 @@
 import z, { string } from 'zod';
 import mongoose from "mongoose";
+import { ValidationErrors } from "@/validations/enums";
 
 const invalid_type_error = 'Tipo de dato inválido para este campo'
 //const required_error = 'This field cannot be blank'
 
 
 export const zodUserSchema = z.object({
-    nombreUsuario: z.string({ invalid_type_error}).min(3,'Debe contener mas de 2 caracteres').max(30,'Debe contener menos de 30 caracteres'),
-    emailUsuario: z.string({ invalid_type_error }).email('Provea un email válido').min(3, 'Debe contener al menos 3 caracteres'),
-    passwordUsuario : z.string({ invalid_type_error}).min(3,'Debe contener mas de 2 caracteres').max(30,'Debe contener menos de 30 caracteres'),
-    ciudadUsuario: z.string({ invalid_type_error }).min(3,'Debe contener mas de 2 caracteres').max(30,'Debe contener menos de 30 caracteres')
-  })
+    nombreUsuario: z.string({ invalid_type_error })
+        .min(3, 'Debe contener mas de 2 caracteres')
+        .max(30, 'Debe contener menos de 30 caracteres'),
+    emailUsuario: z.string({ invalid_type_error })
+        .email('Provea un email válido')
+        .min(3, 'Debe contener al menos 3 caracteres'),
+    passwordUsuario: z.string({ invalid_type_error })
+        .min(3, 'Debe contener mas de 2 caracteres')
+        .max(30, 'Debe contener menos de 30 caracteres')
+        .regex(new RegExp('.*[A-Z].*'), ValidationErrors.invalidPassword)
+        .regex(new RegExp('.*[a-z].*'), ValidationErrors.invalidPassword)
+        .regex(new RegExp('.*[0-9].*'), ValidationErrors.invalidPassword),
+    ciudadUsuario: z.string({ invalid_type_error })
+        .min(3, 'Debe contener mas de 2 caracteres')
+        .max(30, 'Debe contener menos de 30 caracteres')
+})
 
-  export type IUser = z.infer<typeof zodUserSchema>;
+export type IUser = z.infer<typeof zodUserSchema>;
 
-  export const userShema = new mongoose.Schema({
+export const userShema = new mongoose.Schema({
     nombreUsuario: {
         type: String,
         required: true
@@ -38,4 +50,4 @@ export const zodUserSchema = z.object({
     })
 
 //export default model('Usuario', userShema)
-export  const UserModel = mongoose?.models?.User || mongoose.model("User", userShema) 
+export const UserModel = mongoose?.models?.User || mongoose.model("User", userShema) 
