@@ -2,7 +2,7 @@ import { dbConnect } from '@/lib/dbConnect';
 import { NextResponse, NextRequest } from 'next/server';
 import { UserModel } from "@/validations/userShemaZod"
 import bcrypt from 'bcrypt';
-import { IUser } from '@/models/IUser';
+
 
 //   url: /api/users  crea un usuario
 export const POST = async (req: Request, res: Response) => {

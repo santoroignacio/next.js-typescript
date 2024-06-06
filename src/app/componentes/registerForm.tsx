@@ -1,6 +1,6 @@
 "use client";
 
-import { IUser } from "@/models/IUser";
+import { IUser } from "@/validations/userShemaZod"
 import { zodUserSchema } from "@/validations/userShemaZod";
 import handleZodError from "@/validations/handleZodError";
 import { useForm } from 'react-hook-form'

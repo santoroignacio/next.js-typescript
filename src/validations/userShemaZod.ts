@@ -22,7 +22,7 @@ export const zodUserSchema = z.object({
     emailUsuario: {
         type: String,
         required: true,
-        //unique: true
+        unique: true
     },
     passwordUsuario: {
         type: String,
